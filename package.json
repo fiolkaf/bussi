@@ -17,5 +17,17 @@
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/fiolkaf/bussi/issues"
+  },
+  "dependencies": {
+    "unexpected": "~5.6.5",
+    "karma": "~0.12.31"
+  },
+  "devDependencies": {
+    "mocha": "~2.1.0",
+    "karma-mocha": "~0.1.10",
+    "requirejs": "~2.1.15",
+    "karma-requirejs": "~0.2.2",
+    "karma-chrome-launcher": "~0.1.7",
+    "karma-phantomjs-launcher": "~0.1.4"
   }
 }
