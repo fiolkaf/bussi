@@ -24,7 +24,8 @@ define(function(require) {
         });
     };
 
-    /** Subscribe to all topic messages on the MessageBus channel.
+    /**
+     * Subscribe to all topic messages on the MessageBus channel.
      *
      * @param  {String} topic           Message topic. All messages on the channel will be filtered by the topic.
      * @param  {Function} callback      Callback method to receive a message.

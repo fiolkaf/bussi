@@ -117,6 +117,7 @@ define(['src/subscriptions', 'unexpected'], function(Subscriptions, expect) {
                 expect(result.length, 'to equal', 2);
             });
         });
+
         describe('get.wildcard.#', function() {
             it('will get all subscriptions for wildcard # character', function() {
                 var subscriptions = new Subscriptions();
