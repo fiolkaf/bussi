@@ -34,7 +34,6 @@ define(function(require) {
         level._subscriptions.push(callback);
     };
 
-
     /**
      * Removes subscription from subscription list.
      *

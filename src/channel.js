@@ -19,27 +19,32 @@ define(function(require) {
             callback({
                 timestamp: Date.now(),
                 topic: topic,
-                payload: payload,
+                payload: payload
             });
         });
-    }
+    };
 
-    /**
-     * Subscribe to all topic messages on the MessageBus channel.
+    /** Subscribe to all topic messages on the MessageBus channel.
      *
-     * @param  {String} topic   Message topic. All messages on the channel will be filtered by the topic.
-     * @param  {Func} callback  Callback method to receive a message.
-     * @return {Function}       Unsubscribe method - stops subscription.
+     * @param  {String} topic           Message topic. All messages on the channel will be filtered by the topic.
+     * @param  {Function} callback      Callback method to receive a message.
+     * @param  {Object} configuration   Subscription configuration parameters.
+     * @return {Function}               Unsubscribe method - stops subscription.
      */
-    Channel.prototype.subscribe = function subscribe(topic, callback) {
+    Channel.prototype.subscribe = function subscribe(topic, callback, configuration) {
         var subscriptions = this._subscriptions;
-        subscriptions.add(topic, callback);
+        configuration = configuration || {};
+        var receiver = !configuration.once ? callback : function() {
+            callback();
+            subscriptions.remove(topic, receiver);
+        };
+
+        subscriptions.add(topic, receiver);
 
         return function() {
-            subscriptions.remove(topic, callback);
+            subscriptions.remove(topic, receiver);
         };
-    }
+    };
 
     return Channel;
-
 });
