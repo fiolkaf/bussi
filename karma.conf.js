@@ -15,10 +15,11 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      {pattern: 'tests/*.js', included: false},
+      {pattern: 'src/*.js', included: false},
       'test-config/bind-polyfill.js', // For PhantomJS and unexpected support
       {pattern: 'node_modules/unexpected/unexpected.js', included: false},
-      'test-config/test-main.js'
+      {pattern: 'tests/*.js', included: false},
+      {pattern: 'test-config/*.js', included: true}
     ],
 
 
@@ -52,12 +53,12 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
+    autoWatch: false,
 
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode
