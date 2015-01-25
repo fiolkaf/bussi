@@ -16,8 +16,8 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       {pattern: 'src/*.js', included: false},
-      'test-config/bind-polyfill.js', // For PhantomJS and unexpected support
       {pattern: 'node_modules/unexpected/unexpected.js', included: false},
+      {pattern: 'node_modules/polyfill-function-prototype-bind/*.js', included: false},
       {pattern: 'tests/*.js', included: false},
       {pattern: 'test-config/*.js', included: true}
     ],

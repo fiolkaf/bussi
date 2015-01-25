@@ -20,7 +20,14 @@ require.config({
     deps: allTestFiles,
 
     paths: {
-        'unexpected': 'node_modules/unexpected/unexpected'
+        'unexpected': 'node_modules/unexpected/unexpected',
+        'bind-polyfill': 'node_modules/polyfill-function-prototype-bind/bind'
+    },
+
+    shim: {
+        'unexpected': {
+            deps: ['bind-polyfill']
+        }
     },
 
     // we have to kickoff jasmine, as it is asynchronous
