@@ -58,7 +58,7 @@ define(function(require) {
         }
 
         subscriptions.splice(index, 1);
-    }
+    };
 
     function getLevelSubscriptions(topicParts, levelSubscriptions) {
         var topicPart = topicParts.shift();
