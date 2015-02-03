@@ -10,16 +10,14 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'requirejs'],
+    frameworks: ['mocha', 'commonjs', 'es5-shim'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      {pattern: 'src/*.js', included: false},
-      'test-config/bind-polyfill.js', // For PhantomJS and unexpected support
-      {pattern: 'node_modules/unexpected/unexpected.js', included: false},
-      {pattern: 'tests/*.js', included: false},
-      {pattern: 'test-config/*.js', included: true}
+      { pattern: 'node_modules/unexpected/unexpected.js', watched: 'false', served:  'true', included: 'false' },
+      'src/*.js',
+      'tests/*.js'
     ],
 
 
@@ -30,8 +28,10 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+         'src/*.js': ['commonjs'],
+         'tests/*.js': ['commonjs'],
+         'node_modules/unexpected/unexpected.js': ['commonjs']
     },
-
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -58,7 +58,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode

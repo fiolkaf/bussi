@@ -1,33 +1,32 @@
 {
-    "name": "bussi",
-    "version": "0.0.1",
-    "description": "Simple client messagebus implementation",
-    "main": "index.js",
-    "scripts": {
-        "test": "node_modules/karma/bin/karma start --single-run --browsers PhantomJS"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/fiolkaf/bussi.git"
-    },
-    "keywords": [
-        "messagebus"
-    ],
-    "author": "Filip Fiolka",
-    "license": "BSD-2-Clause",
-    "bugs": {
-        "url": "https://github.com/fiolkaf/bussi/issues"
-    },
-    "dependencies": {
-    },
-    "devDependencies": {
-        "unexpected": "~5.6.5",
-        "karma": "~0.12.31",
-        "mocha": "~2.1.0",
-        "karma-mocha": "~0.1.10",
-        "requirejs": "~2.1.15",
-        "karma-requirejs": "~0.2.2",
-        "karma-chrome-launcher": "~0.1.7",
-        "karma-phantomjs-launcher": "~0.1.4"
-    }
+  "name": "bussi",
+  "version": "0.0.1",
+  "description": "Simple client messagebus implementation",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/karma/bin/karma start --single-run --browsers PhantomJS"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fiolkaf/bussi.git"
+  },
+  "keywords": [
+    "messagebus"
+  ],
+  "author": "Filip Fiolka",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/fiolkaf/bussi/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "karma": "~0.12.31",
+    "karma-chrome-launcher": "~0.1.7",
+    "karma-commonjs": "0.0.13",
+    "karma-es5-shim": "0.0.4",
+    "karma-mocha": "~0.1.10",
+    "karma-phantomjs-launcher": "~0.1.4",
+    "mocha": "~2.1.0",
+    "unexpected": "~5.6.5"
+  }
 }
