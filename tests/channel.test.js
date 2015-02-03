@@ -63,7 +63,7 @@ describe('Channel', function() {
             });
             expect(subscribedEnvelope.payload.test, 'to equal', 'ok');
         });
-        it('should reveive multiple messages published on the bus', function() {
+        it('should receive multiple messages published on the bus', function() {
             var channel = new Channel();
             var callCount = 0;
             channel.subscribe('topic', function() {
@@ -90,6 +90,22 @@ describe('Channel', function() {
                 test: 'ok'
             });
             expect(callCount, 'to equal', 0);
+        });
+
+        describe('subscribe configuration', function() {
+            it('should support one time subscription', function() {
+                var channel = new Channel();
+                var callCount = 0;
+                var callback = function() {
+                    callCount++;
+                };
+                channel.subscribe('subscribe/me/once', callback, {
+                    once: true
+                });
+                channel.publish('subscribe/me/once', {});
+                channel.publish('subscribe/me/once', {});
+                expect(callCount, 'to equal', 1);
+            });
         });
     });
 });
