@@ -6,7 +6,7 @@
 
 ## Overview
 
-Bussi.js is a simple messagebus written in Javascript
+Bussi.js is a simple messagebus written in Javascript.
 
 ## Usage
 
