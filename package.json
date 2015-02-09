@@ -1,6 +1,6 @@
 {
   "name": "bussi",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Simple client messagebus implementation",
   "main": "index.js",
   "scripts": {
@@ -11,10 +11,14 @@
     "url": "https://github.com/fiolkaf/bussi.git"
   },
   "keywords": [
-    "messagebus"
+    "messagebus",
+    "channel",
+    "event",
+    "message",
+    "messages"
   ],
   "author": "Filip Fiolka",
-  "license": "BSD-2-Clause",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/fiolkaf/bussi/issues"
   },
