@@ -8,6 +8,7 @@ var Subscriptions = function() {
 /**
  * Add a new subscription to subscription list.
  *
+ * @param  {}
  * @param  {String} topic   Subscription topic, hierarchy separated with slash '/' character, for example /update/incidents/1, /delete/incidents/1 etc.
  *                          Use wildcard character (*) for pattern match, for example /update/incidents/*, or (#) for all hierarchy items match, for example /update/#
  *

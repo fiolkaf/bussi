@@ -5,7 +5,7 @@ describe('Channel', function() {
     describe('publish', function() {
         it('should be able to publish to a channel', function() {
             var channel = new Channel();
-            channel.publish('topic', {
+            channel.publish('id', 'topic', {
                 test: 'ok'
             });
         });
@@ -19,7 +19,7 @@ describe('Channel', function() {
             var channel = new Channel();
             var spy = sinon.spy();
             channel.subscribe('topic', spy);
-            channel.publish('topic', {
+            channel.publish('id', 'topic', {
                 test: 'ok'
             });
             expect(spy.callCount, 'to equal', 1);
@@ -29,7 +29,7 @@ describe('Channel', function() {
             var spy = sinon.spy();
             channel.subscribe('topic', spy);
             channel.subscribe('topic', spy);
-            channel.publish('topic', {
+            channel.publish('id', 'topic', {
                 test: 'ok'
             });
             expect(spy.callCount, 'to equal', 2);
@@ -38,7 +38,7 @@ describe('Channel', function() {
             var channel = new Channel();
             var spy = sinon.spy();
             channel.subscribe('topic.diff', spy);
-            channel.publish('topic', {
+            channel.publish('id', 'topic', {
                 test: 'ok'
             });
             expect(spy.callCount, 'to equal', 0);
@@ -50,7 +50,7 @@ describe('Channel', function() {
                 subscribedEnvelope = envelope;
             };
             channel.subscribe('topic', callback);
-            channel.publish('topic', {
+            channel.publish('id', 'topic', {
                 test: 'ok'
             });
             expect(subscribedEnvelope.payload.test, 'to equal', 'ok');
@@ -59,10 +59,10 @@ describe('Channel', function() {
             var channel = new Channel();
             var spy = sinon.spy();
             channel.subscribe('topic', spy);
-            channel.publish('topic', {
+            channel.publish('id', 'topic', {
                 test: 'call me first'
             });
-            channel.publish('topic', {
+            channel.publish('id', 'topic', {
                 test: 'call me second'
             });
             expect(spy.calledTwice, 'to be true');
@@ -76,7 +76,7 @@ describe('Channel', function() {
                 callCount++;
             });
             unsubscribe();
-            channel.publish('topic', {
+            channel.publish('id', 'topic', {
                 test: 'ok'
             });
             expect(callCount, 'to equal', 0);
@@ -92,8 +92,8 @@ describe('Channel', function() {
                 channel.subscribe('subscribe/me/once', callback, {
                     once: true
                 });
-                channel.publish('subscribe/me/once', {});
-                channel.publish('subscribe/me/once', {});
+                channel.publish('id', 'subscribe/me/once', {});
+                channel.publish('id', 'subscribe/me/once', {});
                 expect(callCount, 'to equal', 1);
             });
         });

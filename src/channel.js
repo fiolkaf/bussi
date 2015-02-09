@@ -6,13 +6,15 @@ var Channel = function() {
 /**
  * Publish a message on the MessageBus channel.
  *
- * @param  {String} topic   Message topic. Subscribers receive all messages published to the topic.
- * @param  {Object} payload Payload data to be send.
+ * @param  {String} senderId  Sender unique identifier
+ * @param  {String} topic     Message topic. Subscribers receive all messages published to the topic.
+ * @param  {Object} payload   Payload data to be send.
  */
-Channel.prototype.publish = function publish(topic, payload) {
+Channel.prototype.publish = function publish(senderId, topic, payload) {
     var subscriptions = this._subscriptions.get(topic);
     subscriptions.forEach(function(callback) {
         callback({
+            senderId: senderId,
             timestamp: Date.now(),
             topic: topic,
             payload: payload
