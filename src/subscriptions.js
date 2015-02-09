@@ -48,7 +48,7 @@ Subscriptions.prototype.remove = function remove(topic, callback) {
     var subscriptions = level._subscriptions;
     var index = subscriptions.indexOf(callback);
     if (index < 0) {
-        throw 'Cannot find subscription on the subscription list';
+        return;
     }
     subscriptions.splice(index, 1);
 };
