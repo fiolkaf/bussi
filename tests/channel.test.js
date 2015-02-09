@@ -17,39 +17,31 @@ describe('Channel', function() {
         });
         it('should callback subscriber when publishing a message', function() {
             var channel = new Channel();
-            var callCount = 0;
-            channel.subscribe('topic', function() {
-                callCount++;
-            });
+            var spy = sinon.spy();
+            channel.subscribe('topic', spy);
             channel.publish('topic', {
                 test: 'ok'
             });
-            expect(callCount, 'to equal', 1);
+            expect(spy.callCount, 'to equal', 1);
         });
         it('should callback multiple subscribers when publishing a message', function() {
             var channel = new Channel();
-            var callCount = 0;
-            var callback = function() {
-                callCount++;
-            };
-            channel.subscribe('topic', callback);
-            channel.subscribe('topic', callback);
+            var spy = sinon.spy();
+            channel.subscribe('topic', spy);
+            channel.subscribe('topic', spy);
             channel.publish('topic', {
                 test: 'ok'
             });
-            expect(callCount, 'to equal', 2);
+            expect(spy.callCount, 'to equal', 2);
         });
         it('should not callback subscriber if topic does not match', function() {
             var channel = new Channel();
-            var callCount = 0;
-            var callback = function() {
-                callCount++;
-            };
-            channel.subscribe('topic.diff', callback);
+            var spy = sinon.spy();
+            channel.subscribe('topic.diff', spy);
             channel.publish('topic', {
                 test: 'ok'
             });
-            expect(callCount, 'to equal', 0);
+            expect(spy.callCount, 'to equal', 0);
         });
         it('should receive a payload', function() {
             var channel = new Channel();
@@ -65,17 +57,15 @@ describe('Channel', function() {
         });
         it('should receive multiple messages published on the bus', function() {
             var channel = new Channel();
-            var callCount = 0;
-            channel.subscribe('topic', function() {
-                callCount++;
-            });
+            var spy = sinon.spy();
+            channel.subscribe('topic', spy);
             channel.publish('topic', {
                 test: 'call me first'
             });
             channel.publish('topic', {
                 test: 'call me second'
             });
-            expect(callCount, 'to equal', 2);
+            expect(spy.calledTwice, 'to be true');
         });
     });
     describe('unsubscribe', function() {
