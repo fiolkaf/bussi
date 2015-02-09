@@ -32,14 +32,14 @@ unsubscribe();
 
 ## Features
 
-#####One time subscription:
+##### One time subscription:
 
 ```javascript
 // No need to unsubscribe
 channel.subscribe('topic/subTopic', callback, { once: true });
 ```
 
-#####Wildcard characters:
+##### Wildcard characters:
 ```javascript
 // matches level0/[all topics]/level2
 channel.subscribe('level0/*/level2', callback);
